@@ -1,0 +1,68 @@
+name: Bug report
+description: Something does not work, or the game crashes.
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! Please fill in as much as you can, it helps a lot.
+
+  - type: dropdown
+    id: minecraft
+    attributes:
+      label: Minecraft version
+      options:
+        - "26.3"
+        - "26.2"
+        - Other (write it below)
+    validations:
+      required: true
+
+  - type: input
+    id: jamming
+    attributes:
+      label: Jamming version
+      description: The file name, e.g. jamming-1.0.0+26.3.jar
+      placeholder: 1.0.0+26.3
+    validations:
+      required: true
+
+  - type: input
+    id: loader
+    attributes:
+      label: Fabric Loader and Fabric API versions
+      placeholder: "Loader 0.19.5, Fabric API 0.164.0+26.3"
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you expect, and what happened instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: How to reproduce
+      description: Step by step, so I can see the bug myself.
+      placeholder: |
+        1. Open the Jamming menu (N)
+        2. Click ...
+        3. ...
+
+  - type: textarea
+    id: log
+    attributes:
+      label: Log or crash report
+      description: |
+        Upload `logs/latest.log` or the file from `crash-reports/` (drag and drop it here),
+        or paste a link from https://mclo.gs
+      render: shell
+
+  - type: textarea
+    id: mods
+    attributes:
+      label: Other mods
+      description: Especially other music or sound mods.
