@@ -1,0 +1,20 @@
+# Gradle / build output (rebuilt from the source, never commit)
+.gradle/
+build/
+out/
+
+# Dev game folder (worlds, logs, options, config)
+run/
+
+# IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Reference images (recolored VANILLA textures: Mojang's assets, must not be published)
+reference/
+
+# OS junk
+Thumbs.db
+.DS_Store

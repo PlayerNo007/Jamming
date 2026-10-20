@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "jamming",
+  "version": "${version}",
+  "name": "Jamming",
+  "description": "Take control of Minecraft's music: skip, replay, pause and loop tracks, pick any song from a searchable list, filter by dimension and biome, keep favorites, and let jukeboxes and note blocks pause the music. Inspired by Music Control by Pardys (MIT).",
+  "authors": [
+    "PlayerNo007"
+  ],
+  "contributors": [
+    "Pardys (original Music Control)"
+  ],
+  "contact": {
+    "homepage": "https://www.youtube.com/@PlayerNo007"
+  },
+  "license": "MIT",
+  "icon": "assets/jamming/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.pn7games.jamming.client.JammingClient"
+    ]
+  },
+  "mixins": [
+    "jamming.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "java": ">=25",
+    "fabric-api": "*",
+    "minecraft": "~${minecraft_version}"
+  }
+}

@@ -1,0 +1,6 @@
+# Line endings: Unix script must keep LF, Windows script CRLF (so both work after a clone on any OS)
+* text=auto
+gradlew text eol=lf
+*.bat text eol=crlf
+*.png binary
+*.jar binary
