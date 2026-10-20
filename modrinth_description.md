@@ -4,19 +4,19 @@
 
 ## Features
 
-### 🎵 Music controls, anywhere
+### Music controls, anywhere
 - **Next / previous track**, **pause / resume** and **loop** with one key press, while you play
 - A small **player in the main menu** (top-left corner): control the menu music without loading a world
 - Pausing only pauses the **music**, everything else keeps playing
 
-### 📜 The Jamming menu
+### The Jamming menu
 Press <kbd>N</kbd> to open it.
 - Every music track the game knows in one list: **vanilla music, music discs, and music from resource packs and other mods**
 - Real track names (*Lena Raine – Ancestry*), with the artist under the title
 - **Click a track to play it.** A track you picked plays to the end, even in the main menu or underwater
 - **Music volume** slider (drag it or use the mouse wheel)
 
-### 🔎 Filters and search
+### Filters and search
 - **All / Here / ★ Favorites**: *Here* shows the tracks that fit where you are right now
 - **Dimension filter**: Overworld, Nether, End, Menu, Discs (and mods)
 - Hover a track's dimension to see **every biome it plays in**
@@ -37,10 +37,10 @@ Press <kbd>N</kbd> to open it.
 
 </details>
 
-### 📻 Jukeboxes and note blocks
+### Jukeboxes and note blocks
 When a **jukebox or note blocks** play near you (32 blocks), the background music **pauses**. It **resumes** where it stopped once they are quiet again.
 
-### ⏱ Gap between songs
+### Gap between songs
 Vanilla waits 10–20 minutes between songs. Pick your own gap: **0 s, 15 s, 30 s, 1 min, 2 min, 5 min** or **Vanilla**.
 
 ## Keys
