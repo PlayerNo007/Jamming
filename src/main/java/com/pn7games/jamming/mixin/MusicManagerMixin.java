@@ -18,11 +18,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(MusicManager.class)
 public abstract class MusicManagerMixin {
 
-    // While a jukebox / note blocks play nearby, the music manager "sleeps": no new songs start,
-    // and the (paused) current song is not stopped or replaced.
+    // While the player paused the music, or a jukebox / note blocks play nearby, the music manager "sleeps":
+    // no new songs start, and the (paused) current song is not stopped or replaced.
+    // Without this, changing dimension (vanilla stops all sounds) would start a new, unpaused song.
     @Inject(method = "tick", at = @At("HEAD"), cancellable = true)
-    private void jamming$waitForRecord(CallbackInfo ci) {
-        if (JammingPlayer.isSuppressed()) {
+    private void jamming$waitWhilePaused(CallbackInfo ci) {
+        if (JammingPlayer.shouldMusicBePaused()) {
             ci.cancel();
         }
     }

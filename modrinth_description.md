@@ -69,6 +69,9 @@ Thank you, Pardys, for the original idea!
 <details>
 <summary><b>Changelog</b></summary>
 
+**1.0.1**
+- Fixed: paused music no longer starts playing again after changing dimension, respawning or leaving the world
+
 **1.0.0**
 - First release for Minecraft 26.2 – 26.3
 

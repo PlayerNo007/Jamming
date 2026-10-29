@@ -1,8 +1,10 @@
 package com.pn7games.jamming.client;
 
+import com.pn7games.jamming.mixin.MusicManagerAccessor;
 import com.pn7games.jamming.mixin.SoundManagerAccessor;
 import com.pn7games.jamming.music.MusicLibrary;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.sounds.SoundInstance;
 import net.minecraft.client.sounds.MusicManager;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
@@ -126,11 +128,11 @@ public final class JammingPlayer {
         return loop;
     }
 
-    // The track that is playing right now, or null (silence between songs, or vanilla music we don't know).
+    // The track that is playing (or paused) right now, or null (silence between songs, or vanilla music we don't know).
     @Nullable
     public static Identifier currentTrack() {
         boolean musicPlaying = Minecraft.getInstance().getMusicManager().getCurrentMusicTranslationKey() != null;
-        return musicPlaying ? current : null;
+        return musicPlaying || paused ? current : null;
     }
 
     // ---- Called by the keys (and later the menu) ----
@@ -156,13 +158,27 @@ public final class JammingPlayer {
     }
 
     public static void togglePause(Minecraft client) {
-        if (client.getMusicManager().getCurrentMusicTranslationKey() == null) {
+        if (!paused && client.getMusicManager().getCurrentMusicTranslationKey() == null) {
             show(client, Component.translatable("jamming.message.nothing_playing"));
             return;
         }
         paused = !paused;
-        applyPause(client);
+        if (!paused && current != null && !isMusicSoundAlive(client)) {
+            // Vanilla stopped our paused song meanwhile (e.g. dimension change stops all sounds): start it again.
+            boolean wasUserChoice = userChoice;
+            requested = current;
+            restart(client);
+            userChoice = wasUserChoice;
+        } else {
+            applyPause(client);
+        }
         show(client, Component.translatable(paused ? "jamming.message.paused" : "jamming.message.resumed"));
+    }
+
+    // True if the music manager's song still has a sound channel (playing or paused).
+    private static boolean isMusicSoundAlive(Minecraft client) {
+        SoundInstance music = ((MusicManagerAccessor) client.getMusicManager()).jamming$getCurrentMusic();
+        return music != null && client.getSoundManager().isActive(music);
     }
 
     public static void toggleLoop(Minecraft client) {
